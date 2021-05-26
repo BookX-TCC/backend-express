@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import CreateUserService from "../services/CreateuserService";
+import CreateUserService from "../services/CreateUserService";
 import ListUserService from "../services/ListUsersService";
 import ShowUserService from "../services/ShowUserService";
 
@@ -22,39 +22,11 @@ export default class UsersController {
   }
 
   public async create(req: Request, res: Response): Promise<Response> {
-    const {
-      nome,
-      sobrenome,
-      email,
-      senha,
-      sexo,
-      data_nasc,
-      telefone,
-      end_cep,
-      end_rua,
-      end_num,
-      end_cidade,
-      end_bairro,
-      end_uf,
-    } = req.body;
+    const { user } = req.body;
 
     const createUser = new CreateUserService();
-    const user = await createUser.execute({
-      nome,
-      sobrenome,
-      email,
-      senha,
-      sexo,
-      data_nasc,
-      telefone,
-      end_cep,
-      end_rua,
-      end_num,
-      end_cidade,
-      end_bairro,
-      end_uf,
-    });
+    const usuario = await createUser.execute({ user });
 
-    return res.json(user);
+    return res.json(usuario);
   }
 }

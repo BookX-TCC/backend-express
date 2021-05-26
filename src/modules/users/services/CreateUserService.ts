@@ -4,6 +4,10 @@ import User from "../typeorm/entities/User";
 import UsersRepository from "../typeorm/repositories/UsersRepository";
 
 interface IRequest {
+  user: IUser;
+}
+
+interface IUser {
   nome: string;
   sobrenome: string;
   email: string;
@@ -20,47 +24,19 @@ interface IRequest {
 }
 
 class CreateUserService {
-  public async execute({
-    nome,
-    sobrenome,
-    email,
-    senha,
-    sexo,
-    data_nasc,
-    telefone,
-    end_cep,
-    end_rua,
-    end_num,
-    end_cidade,
-    end_bairro,
-    end_uf,
-  }: IRequest): Promise<User> {
+  public async execute({ user }: IRequest): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository);
 
-    const emailExists = await usersRepository.findByEmail(email);
+    const emailExists = await usersRepository.findByEmail(user.email);
 
     if (emailExists) {
       throw new AppError("Email já utilizado");
     }
 
-    const user = usersRepository.create({
-      nome,
-      sobrenome,
-      email,
-      senha,
-      sexo,
-      data_nasc,
-      telefone,
-      end_cep,
-      end_rua,
-      end_num,
-      end_cidade,
-      end_bairro,
-      end_uf,
-    });
+    const usuario = usersRepository.create(user);
 
-    await usersRepository.save(user);
-    return user;
+    await usersRepository.save(usuario);
+    return usuario;
   }
 }
 
