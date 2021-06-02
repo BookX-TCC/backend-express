@@ -22,10 +22,38 @@ export default class UsersController {
   }
 
   public async create(req: Request, res: Response): Promise<Response> {
-    const { user } = req.body;
+    const {
+      nome,
+      sobrenome,
+      email,
+      senha,
+      sexo,
+      data_nasc,
+      telefone,
+      end_cep,
+      end_rua,
+      end_num,
+      end_cidade,
+      end_bairro,
+      end_uf,
+    } = req.body;
 
     const createUser = new CreateUserService();
-    const usuario = await createUser.execute({ user });
+    const usuario = await createUser.execute({
+      nome,
+      sobrenome,
+      email,
+      senha,
+      sexo,
+      data_nasc,
+      telefone,
+      end_cep,
+      end_rua,
+      end_num,
+      end_cidade,
+      end_bairro,
+      end_uf,
+    });
 
     return res.json(usuario);
   }
