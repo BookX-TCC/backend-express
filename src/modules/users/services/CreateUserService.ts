@@ -10,7 +10,7 @@ interface IRequest {
   email: string;
   senha: string;
   sexo: string;
-  data_nasc: Date;
+  data_nasc: string;
   telefone: string;
   end_cep: string;
   end_rua: string;

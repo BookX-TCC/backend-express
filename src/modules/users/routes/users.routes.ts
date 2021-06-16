@@ -34,7 +34,7 @@ usersRouter.post(
       email: Joi.string().email().required(),
       senha: Joi.string().required(),
       sexo: Joi.string().required(),
-      data_nasc: Joi.date().required(),
+      data_nasc: Joi.string().required(),
       telefone: Joi.string().required(),
       end_cep: Joi.string().required(),
       end_rua: Joi.string().required(),

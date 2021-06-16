@@ -36,7 +36,7 @@ export class CreateUsers1620216035297 implements MigrationInterface {
           },
           {
             name: "data_nasc",
-            type: "date",
+            type: "string",
           },
           {
             name: "telefone",
