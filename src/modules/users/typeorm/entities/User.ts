@@ -83,7 +83,7 @@ class User {
     return `http://localhost:3000/files/${this.avatar}`;
   }
 
-  @OneToMany(() => Book, book => book.user)
+  @OneToMany(() => Book, book => book.user_id)
   books: Book;
 }
 

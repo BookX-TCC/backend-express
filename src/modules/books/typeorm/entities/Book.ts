@@ -25,32 +25,32 @@ class Book {
   autor: string;
 
   @Column()
-  ano_pub: number;
+  ano_pub?: number;
 
   @Column()
-  descricao: string;
+  descricao?: string;
 
   @Column()
-  editora: string;
+  editora?: string;
 
   @Column()
-  classificacao: string;
+  classificacao?: string;
 
   @Column()
-  capa: string;
+  capa?: string;
 
   @Column()
-  idioma: string;
+  idioma?: string;
 
   @Column()
-  genero: string;
+  genero?: string;
 
   @Column()
   disponibilidade: string;
 
   @ManyToOne(() => User, user => user.books)
   @JoinColumn({ name: "user_id" })
-  user: User;
+  user_id: number;
 
   @CreateDateColumn()
   @Exclude()
