@@ -2,10 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { Exclude, Expose } from "class-transformer";
+import Book from "@modules/books/typeorm/entities/Book";
 
 @Entity("users")
 class User {
@@ -80,6 +82,9 @@ class User {
 
     return `http://localhost:3000/files/${this.avatar}`;
   }
+
+  @OneToMany(() => Book, book => book.user)
+  books: Book;
 }
 
 export default User;

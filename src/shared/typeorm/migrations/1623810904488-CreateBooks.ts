@@ -1,10 +1,10 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreateUsers1620216035297 implements MigrationInterface {
+export class CreateBooks1623810904488 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "users",
+        name: "books",
         columns: [
           {
             name: "id",
@@ -14,62 +14,59 @@ export class CreateUsers1620216035297 implements MigrationInterface {
             isGenerated: true,
           },
           {
-            name: "nome",
+            name: "isbn",
+            type: "bigint",
+          },
+          {
+            name: "titulo",
             type: "varchar",
           },
           {
-            name: "sobrenome",
+            name: "autor",
             type: "varchar",
           },
           {
-            name: "email",
-            type: "varchar",
-            isUnique: true,
-          },
-          {
-            name: "senha",
-            type: "varchar",
-          },
-          {
-            name: "sexo",
-            type: "varchar",
-          },
-          {
-            name: "data_nasc",
-            type: "varchar",
-          },
-          {
-            name: "telefone",
-            type: "varchar",
-          },
-          {
-            name: "end_cep",
-            type: "varchar",
-          },
-          {
-            name: "end_rua",
-            type: "varchar",
-          },
-          {
-            name: "end_num",
+            name: "ano_pub",
             type: "int",
+            isNullable: true,
           },
           {
-            name: "end_cidade",
-            type: "varchar",
+            name: "descricao",
+            type: "text",
+            isNullable: true,
           },
           {
-            name: "end_bairro",
-            type: "varchar",
-          },
-          {
-            name: "end_uf",
-            type: "varchar",
-          },
-          {
-            name: "avatar",
+            name: "editora",
             type: "varchar",
             isNullable: true,
+          },
+          {
+            name: "classificacao",
+            type: "varchar",
+            isNullable: true,
+          },
+          {
+            name: "capa",
+            type: "varchar",
+            isNullable: true,
+          },
+          {
+            name: "idioma",
+            type: "varchar",
+            isNullable: true,
+          },
+          {
+            name: "genero",
+            type: "varchar",
+            isNullable: true,
+          },
+          {
+            name: "disponibilidade",
+            type: "varchar",
+          },
+          {
+            name: "user_id",
+            type: "int",
           },
           {
             name: "created_at",
@@ -87,6 +84,6 @@ export class CreateUsers1620216035297 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("users");
+    await queryRunner.dropTable("books");
   }
 }
