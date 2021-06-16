@@ -31,7 +31,7 @@ class User {
   @Exclude()
   sexo: string;
 
-  @CreateDateColumn()
+  @Column()
   @Exclude()
   data_nasc: string;
 
